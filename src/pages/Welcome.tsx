@@ -1,27 +1,41 @@
 import React from 'react';
-import { StyleSheet, Text, SafeAreaView, StatusBar, Image } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  SafeAreaView,
+  StatusBar,
+  Image,
+  TouchableOpacity,
+  Dimensions,
+  View,
+} from 'react-native';
+import { Feather } from '@expo/vector-icons';
 
 import wateringImg from '../assets/watering.png';
-import Button from '../components/Button';
 import colors from '../styles/colors';
+import fonts from '../styles/fonts';
 
 export function Welcome() {
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>
-        Gerencie {'\n'}
-        suas plantas {'\n'}
-        de forma fácil
-      </Text>
+      <View style={styles.wrapper}>
+        <Text style={styles.title}>
+          Gerencie {'\n'}
+          suas plantas de {'\n'}
+          forma fácil
+        </Text>
 
-      <Image style={styles.image} source={wateringImg} />
+        <Image style={styles.image} source={wateringImg} resizeMode="contain" />
 
-      <Text style={styles.subTitle}>
-        Não esqueça mais de regar suas plantas. Nós cuidamos de lembrar você
-        sempre que precisar.
-      </Text>
+        <Text style={styles.subTitle}>
+          Não esqueça mais de regar suas plantas. Nós cuidamos de lembrar você
+          sempre que precisar.
+        </Text>
 
-      <Button title=">" />
+        <TouchableOpacity style={styles.button} activeOpacity={0.7}>
+          <Feather name="chevron-right" style={styles.buttonIcon} />
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 }
@@ -29,15 +43,20 @@ export function Welcome() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+  },
+  wrapper: {
+    flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
+    paddingHorizontal: 20,
   },
   title: {
-    fontSize: 32,
+    fontSize: 28,
     fontWeight: 'bold',
     textAlign: 'center',
     color: colors.heading,
+    fontFamily: fonts.heading,
+    lineHeight: 34,
     marginTop: StatusBar.currentHeight ? StatusBar.currentHeight + 38 : 38, // Adaptação para app android
   },
   subTitle: {
@@ -45,9 +64,22 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingHorizontal: 20,
     color: colors.heading,
+    fontFamily: fonts.text,
   },
   image: {
-    width: 292,
-    height: 284,
+    height: Dimensions.get('window').width * 0.7,
+  },
+  button: {
+    width: 56,
+    height: 56,
+    backgroundColor: colors.green,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 16,
+    marginBottom: 10,
+  },
+  buttonIcon: {
+    fontSize: 32,
+    color: colors.white,
   },
 });
