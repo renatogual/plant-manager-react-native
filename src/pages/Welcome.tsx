@@ -2,13 +2,12 @@ import React from 'react';
 import {
   StyleSheet,
   Text,
-  SafeAreaView,
-  StatusBar,
   Image,
   TouchableOpacity,
   Dimensions,
   View,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { Feather } from '@expo/vector-icons';
 
 import wateringImg from '../assets/watering.png';
@@ -57,7 +56,7 @@ const styles = StyleSheet.create({
     color: colors.heading,
     fontFamily: fonts.heading,
     lineHeight: 34,
-    marginTop: StatusBar.currentHeight ? StatusBar.currentHeight + 38 : 38, // Adaptação para app android
+    marginTop: 38,
   },
   subTitle: {
     fontSize: 18,
