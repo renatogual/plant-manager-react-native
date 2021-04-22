@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -7,8 +7,29 @@ import EnviromentButton from '../components/EnviromentButton';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
+import api from '../services/api';
+
+interface EnviromentProps {
+  key: string;
+  title: string;
+}
 
 export function PlantSelect() {
+  const [environment, setEnvironment] = useState<EnviromentProps[]>([]);
+
+  useEffect(() => {
+    (async function fetchEnviroments() {
+      const { data } = await api.get('plants_environments');
+      setEnvironment([
+        {
+          key: 'all',
+          title: 'Todos',
+        },
+        ...data,
+      ]);
+    })();
+  }, []);
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -18,8 +39,8 @@ export function PlantSelect() {
       </View>
       <View>
         <FlatList
-          data={[1, 2, 3, 4, 5]}
-          renderItem={() => <EnviromentButton title="Cozinha" />}
+          data={environment}
+          renderItem={({ item }) => <EnviromentButton title={item.title} />}
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.enviromentList}
@@ -56,5 +77,5 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
     marginLeft: 32,
     marginVertical: 32,
-  }
+  },
 });
