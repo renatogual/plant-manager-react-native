@@ -8,9 +8,11 @@ import {
   TouchableWithoutFeedback,
   Platform,
   Keyboard,
+  Alert,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
@@ -23,8 +25,15 @@ export function UserIdentification() {
 
   const navigation = useNavigation();
 
-  function handleSubmit() {
-    navigation.navigate('Confirmation');
+  async function handleSubmit() {
+    if (!name) Alert.alert('Me diz como chamar você 😢');
+
+    try {
+      await AsyncStorage.setItem('@plantmanager:user', String(name));
+      navigation.navigate('Confirmation');
+    } catch {
+      Alert.alert('Não foi possível salvar o seu nome 😢');
+    }
   }
 
   function handleInputBlur() {
