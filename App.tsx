@@ -14,7 +14,9 @@ export default function App() {
     Jost_600SemiBold,
   });
 
-  if (!fontsLoaded) <AppLoading />;
-
-  return <Routes />;
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
+    return <Routes />;
+  }
 }
