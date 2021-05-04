@@ -1,5 +1,5 @@
 <h1 align="center"> 🚀 Demonstração </h1>
-<img src="./assets/demo.gif" width="300" height="550">
+<p align="center"> <img src="./assets/demo.gif" width="280" height="550"> </p>
 
 ## 🔖 Sobre
 
