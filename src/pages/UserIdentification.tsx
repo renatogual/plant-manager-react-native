@@ -26,7 +26,9 @@ export function UserIdentification() {
   const navigation = useNavigation();
 
   async function handleSubmit() {
-    if (!name) Alert.alert('Me diz como chamar você 😢');
+    if (!name) {
+      return Alert.alert('Me diz como chamar você 😢');
+    }
 
     try {
       await AsyncStorage.setItem('@plantmanager:user', String(name));
