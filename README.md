@@ -15,10 +15,10 @@ Plant Manager é um app mobile para lembrar os usuários de regar suas plantinha
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/) e [Expo](https://expo.io/).
-Além disto é bom ter um editor para trabalhar com o código como o [VSCode](https://code.visualstudio.com/)
+Além disto é bom ter um editor para trabalhar com o código como o [VSCode](https://code.visualstudio.com/).
 
 Foi utilizado o Expo para facilitar no desenvolvimento do app e também poder rodar a aplicação em um celular com android ou ios sem a necessidade
-de configurar e instalar um emulador.
+de instalar e configurar um emulador.
 
 ### 🎲 Executando a aplicação
 
